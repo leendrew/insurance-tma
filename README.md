@@ -1,12 +1,12 @@
 # Insurance
 
-~~[Telegram Mini Apps Direct Link]()~~
+[Telegram Mini Apps Direct Link](https://t.me/insurance_tma_bot/insurance_tma_app)
 
 ~~[Backend]()~~
 
 ## Stack
 
-- Telegram Mini Apps
+- [@tma.js/sdk](https://github.com/Telegram-Mini-Apps/tma.js)
 - Typescript
 - React
 
