@@ -6,7 +6,10 @@
 
 html,
 body {
+  margin: 0;
   height: 100%;
+  color: var(--tg-theme-text-color, #ffffff);
+  background-color: var(--tg-theme-background-color, #18222d);
 }
 
 img,
