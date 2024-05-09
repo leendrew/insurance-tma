@@ -7,6 +7,7 @@
 ## Stack
 
 - [@tma.js/sdk](https://github.com/Telegram-Mini-Apps/tma.js)
+- [@tonconnect/sdk](https://github.com/ton-connect/sdk)
 - Typescript
 - React
 
