@@ -1,12 +1,20 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { App } from './App';
-import './index.css';
+import { TmaSdkRoot, TonConnectSdkRoot, MuiRoot, ToastRoot } from '@/components';
+import { RouterProvider } from '@/router';
+import '@/index.css';
 
 function bootstrap() {
   createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-      <App />
+      <TmaSdkRoot>
+        <TonConnectSdkRoot>
+          <MuiRoot>
+            <RouterProvider />
+            <ToastRoot />
+          </MuiRoot>
+        </TonConnectSdkRoot>
+      </TmaSdkRoot>
     </React.StrictMode>,
   );
 }
