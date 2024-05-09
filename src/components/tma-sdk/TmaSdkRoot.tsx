@@ -1,6 +1,5 @@
 import type { PropsWithChildren } from 'react';
 import { DisplayGate, SDKProvider } from '@tma.js/sdk-react';
-import { Loader } from '@/components';
 import { TmaSdkInit } from './TmaSdkInit';
 
 interface TmaSdkRootProps {}
@@ -15,10 +14,7 @@ export function TmaSdkRoot({ children }: PropsWithChildren<TmaSdkRootProps>) {
           complete: true,
         }}
       >
-        <DisplayGate
-          initial={Loader}
-          loading={Loader}
-        >
+        <DisplayGate>
           <TmaSdkInit>{children}</TmaSdkInit>
         </DisplayGate>
       </SDKProvider>

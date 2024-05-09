@@ -21,7 +21,7 @@ export function MuiRoot({ children }: PropsWithChildren<MuiRootProps>) {
   return (
     <>
       <ThemeProvider theme={muiConfig}>
-        <CssBaseline />
+        <CssBaseline enableColorScheme />
         {children}
       </ThemeProvider>
     </>
