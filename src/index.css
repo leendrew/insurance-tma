@@ -12,6 +12,10 @@ body {
   background-color: var(--tg-theme-secondary-background-color, #18222d);
 }
 
+a {
+  text-decoration: none;
+}
+
 img,
 video,
 svg,
