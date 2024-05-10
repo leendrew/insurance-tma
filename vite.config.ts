@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => {
   const currentWorkingDir = dirname(fileURLToPath(import.meta.url));
 
   return {
-    base: '/',
+    base: './',
     plugins: [react()],
     resolve: {
       alias: {
