@@ -1,6 +1,9 @@
 .overlay {
   position: fixed;
   inset: 0;
+  z-index: 1000;
+  color: var(--tg-theme-text-color, #ffffff);
+  background-color: var(--tg-theme-secondary-background-color, #18222d);
 }
 
 .body {

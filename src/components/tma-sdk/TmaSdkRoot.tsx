@@ -15,7 +15,6 @@ export function TmaSdkRoot({ children }: PropsWithChildren<TmaSdkRootProps>) {
           complete: true,
         }}
       >
-        <GateOverlay />
         <DisplayGate
           initial={<GateOverlay />}
           loading={<GateOverlay />}
