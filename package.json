@@ -1,9 +1,9 @@
 {
   "name": "insurance-tma",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.0",
   "type": "module",
-  "homepage": "https://leendrew.github.io/insurance-tma",
+  "homepage": "https://insurance-tma.pages.dev/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

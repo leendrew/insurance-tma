@@ -1,17 +1,14 @@
 import { route } from 'react-router-typesafe-routes/dom';
 
-// for github-pages
-export const ROUTE_BASE_PREFIX = 'insurance-tma';
-
 export const pathConfig = {
-  home: route(`${ROUTE_BASE_PREFIX}`),
-  login: route(`${ROUTE_BASE_PREFIX}/login`),
-  // dynamic: route(`${ROUTE_BASE_PREFIX}/dynamic/:id`, {
+  home: route(''),
+  login: route('login'),
+  // dynamic: route('dynamic/:id', {
   //   params: {
   //     id: number().defined(),
   //   },
   // }),
-  // query: route(`${ROUTE_BASE_PREFIX}/query`, {
+  // query: route('query', {
   //   searchParams: {
   //     count: number(),
   //   },
