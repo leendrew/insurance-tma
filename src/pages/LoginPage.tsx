@@ -1,23 +1,47 @@
-import { Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { Container, Stack, Typography } from '@mui/material';
 import { Button } from '@/shared/ui';
 
 export function LoginPage() {
   return (
     <>
-      <Typography
-        component="h1"
-        variant="h2"
+      <Container
+        sx={{
+          height: '100%',
+        }}
       >
-        Login Page
-      </Typography>
-      <Button>open</Button>
-      <Button loading={true}>button</Button>
-      <Button
-        loading={true}
-        loadingText="pending..."
-      >
-        button 2
-      </Button>
+        <Stack
+          sx={{
+            height: '100%',
+          }}
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          textAlign="center"
+          gap={2}
+        >
+          <Typography
+            component="h1"
+            variant="h4"
+          >
+            Connect your Tonkeeper Wallet
+          </Typography>
+          <Button>Connect</Button>
+          <Typography
+            component="span"
+            variant="body1"
+          >
+            Make sure you have testnet Wallet
+          </Typography>
+          <Typography
+            component="span"
+            variant="body1"
+          >
+            You can top up your balance via&nbsp;
+            <Link to="https://t.me/testgiver_ton_bot">@testgiver_ton_bot</Link>
+          </Typography>
+        </Stack>
+      </Container>
     </>
   );
 }
