@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Container, Stack, Typography } from '@mui/material';
-import { Button } from '@/shared/ui';
+import { TonKeeperConnectButton } from '@/components';
 
 export function LoginPage() {
   return (
@@ -26,7 +26,7 @@ export function LoginPage() {
           >
             Connect your Tonkeeper Wallet
           </Typography>
-          <Button>Connect</Button>
+          <TonKeeperConnectButton />
           <Typography
             component="span"
             variant="body1"
