@@ -15,7 +15,7 @@ export function TmaSdkInit({ children }: PropsWithChildren<TmaSdkInitProps>) {
   }, [miniApp]);
 
   useEffect(() => {
-    console.log('@', launchParams);
+    console.log('@ launch params', launchParams);
     setDebug(true);
   }, [launchParams]);
 

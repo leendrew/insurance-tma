@@ -15,8 +15,6 @@ export function TonConnectSdkRoot({ children }: PropsWithChildren<TonConnectSdkR
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [wallets, setWallets] = useState<WalletInfo[]>([]);
 
-  console.log('@@@ ton connect sdk root rerender', wallets, isLoading);
-
   useEffect(() => {
     tonConnect
       .restoreConnection()

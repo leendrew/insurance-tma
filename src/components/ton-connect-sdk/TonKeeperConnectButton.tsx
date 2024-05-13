@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { isWalletInfoCurrentlyInjected, isWalletInfoRemote, CHAIN } from '@tonconnect/sdk';
 import type { WalletInfo } from '@tonconnect/sdk';
+import { toast } from 'react-toastify';
 import { useTonConnectSdkContext } from './TonConnect.context';
 import { Button, Modal } from '@/shared/ui';
 import { pathConfig } from '@/shared/config';
@@ -29,14 +30,13 @@ export function TonKeeperConnectButton() {
       }
 
       if (wallet.account.chain !== CHAIN.TESTNET) {
-        // TODO error toast
         tonConnect.disconnect();
+        toast.error('You are in not testnet');
         return;
       }
 
-      console.log('@ wallet status change', wallet);
-      // TODO success toast
       navigate(pathConfig.home.path);
+      toast.success('Connect to Wallet');
     });
 
     return () => {
@@ -54,13 +54,13 @@ export function TonKeeperConnectButton() {
         universalLink: tonKeeperWallet.universalLink,
       });
       setTonKeeperConnectUrl(qrUrl);
-      console.log('@ remote');
+      console.log('@ wallet remote');
       return;
     }
 
     if (isWalletInfoCurrentlyInjected(tonKeeperWallet)) {
       // browser extension, direct connect
-      console.log('@ injected');
+      console.log('@ wallet injected');
       return tonConnect.connect({ jsBridgeKey: tonKeeperWallet.jsBridgeKey });
     }
 

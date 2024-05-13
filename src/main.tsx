@@ -14,7 +14,6 @@ function bootstrap() {
           </MuiRoot>
         </TonConnectSdkRoot>
       </TmaSdkRoot>
-      ,
     </React.StrictMode>,
   );
 }
