@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Box, Stack } from '@mui/material';
 import { isWalletInfoCurrentlyInjected, isWalletInfoRemote, CHAIN } from '@tonconnect/sdk';
 import type { WalletInfo } from '@tonconnect/sdk';
-import { toast } from 'react-toastify';
+import { QRCodeSVG } from 'qrcode.react';
 import { useTonConnectSdkContext } from './TonConnect.context';
 import { Button, Modal } from '@/shared/ui';
 import { pathConfig } from '@/shared/config';
@@ -102,7 +103,32 @@ export function TonKeeperConnectButton() {
           onClose={onModalClose}
         >
           <>
-            <Button onClick={onDirectLinkOpen}>Direct URL</Button>
+            <Stack
+              direction="column"
+              gap={2}
+            >
+              <Box
+                sx={{
+                  padding: '1rem',
+                  borderRadius: '1rem',
+                  background: '#fff',
+                }}
+              >
+                <QRCodeSVG
+                  value={tonKeeperUniversalLink as string}
+                  width="100%"
+                  level="L"
+                  imageSettings={{
+                    src: tonKeeperWallet.imageUrl,
+                    width: 24,
+                    height: 24,
+                    excavate: true,
+                  }}
+                  includeMargin={false}
+                />
+              </Box>
+              <Button onClick={onDirectLinkOpen}>Direct URL</Button>
+            </Stack>
           </>
         </Modal>
       )}
