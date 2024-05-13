@@ -1,14 +1,18 @@
 import { useEffect, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { isWalletInfoCurrentlyInjected, isWalletInfoRemote, CHAIN } from '@tonconnect/sdk';
 import type { WalletInfo } from '@tonconnect/sdk';
 // import { Typography } from '@mui/material';
 import { connector } from './connector';
 import { Button, Modal } from '@/shared/ui';
+import { pathConfig } from '@/shared/config';
 import { TonKeeperIcon } from '@/assets/icons';
 
 const TON_KEEPER_APP_NAME = 'tonkeeper';
 
 export function TonKeeperConnectButton() {
+  const navigate = useNavigate();
+
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [wallets, setWallets] = useState<WalletInfo[]>([]);
 
@@ -26,6 +30,7 @@ export function TonKeeperConnectButton() {
   useEffect(() => {
     const unsubscribe = connector.onStatusChange((wallet) => {
       if (!wallet) {
+        // user disconnect wallet
         return;
       }
 
@@ -36,15 +41,18 @@ export function TonKeeperConnectButton() {
       }
 
       console.log('@ wallet status change', wallet);
+      // TODO success toast
+      navigate(pathConfig.home.path);
     });
 
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [navigate]);
 
-  const onButtonClick = () => {
+  const onConnectButtonClick = () => {
     setIsModalOpen(true);
+
     if (isWalletInfoRemote(tonKeeperWallet)) {
       // TODO show QR
       const qrUrl = connector.connect({
@@ -90,7 +98,7 @@ export function TonKeeperConnectButton() {
         }}
         variant="contained"
         startIcon={<TonKeeperIcon />}
-        onClick={onButtonClick}
+        onClick={onConnectButtonClick}
       >
         Connect
       </Button>

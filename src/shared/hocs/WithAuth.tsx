@@ -1,10 +1,32 @@
-import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { pathConfig } from '@/shared/config';
+import { connector } from '@/components';
 
 export function WithAuth() {
+  const navigate = useNavigate();
   const location = useLocation();
 
-  const isAuth = false;
+  useEffect(() => {
+    const unsubscribe = connector.onStatusChange((wallet) => {
+      if (!wallet) {
+        // user disconnect wallet
+        navigate(pathConfig.login.path, {
+          replace: true,
+          state: {
+            from: location,
+          },
+        });
+        return;
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [navigate, location]);
+
+  const isAuth = !!connector.wallet;
 
   if (!isAuth) {
     return (
