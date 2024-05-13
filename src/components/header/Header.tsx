@@ -1,13 +1,10 @@
-import { useNavigate } from 'react-router-dom';
 import { Box, Container, Stack, Typography, IconButton } from '@mui/material';
 import { Logout as LogoutIcon } from '@mui/icons-material';
 import { toUserFriendlyAddress, CHAIN } from '@tonconnect/sdk';
 import { toast } from 'react-toastify';
 import { useTonConnectSdkContext, TonKeeperConnectButton } from '@/components';
-import { pathConfig } from '@/shared/config';
 
 export function Header() {
-  const navigate = useNavigate();
   const { tonConnect } = useTonConnectSdkContext();
 
   const wallet = tonConnect.wallet;
@@ -27,10 +24,7 @@ export function Header() {
   };
 
   const onDisconnectButtonClick = () => {
-    tonConnect.disconnect().then(() => {
-      navigate(pathConfig.login.path);
-      toast.success('Wallet Disconnected');
-    });
+    tonConnect.disconnect();
   };
 
   return (
