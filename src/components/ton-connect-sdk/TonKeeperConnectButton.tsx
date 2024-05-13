@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, Stack } from '@mui/material';
+import { toast } from 'react-toastify';
 import { isWalletInfoCurrentlyInjected, isWalletInfoRemote, CHAIN } from '@tonconnect/sdk';
 import type { WalletInfo } from '@tonconnect/sdk';
 import { QRCodeSVG } from 'qrcode.react';
 import { useTonConnectSdkContext } from './TonConnect.context';
 import { Button, Modal } from '@/shared/ui';
-import { pathConfig } from '@/shared/config';
 import { TonKeeperIcon } from '@/assets/icons';
+import { pathConfig } from '@/shared/config';
 
 const TON_KEEPER_APP_NAME = 'tonkeeper';
 
@@ -27,12 +28,11 @@ export function TonKeeperConnectButton() {
     setIsModalOpen(true);
 
     if (isWalletInfoRemote(tonKeeperWallet)) {
-      // TODO show QR
-      const qrUrl = tonConnect.connect({
+      const universalLink = tonConnect.connect({
         bridgeUrl: tonKeeperWallet.bridgeUrl,
         universalLink: tonKeeperWallet.universalLink,
       });
-      setTonKeeperConnectUrl(qrUrl);
+      setTonKeeperUniversalLink(universalLink);
       console.log('@ wallet remote');
       return;
     }
@@ -81,7 +81,7 @@ export function TonKeeperConnectButton() {
   };
 
   const onDirectLinkOpen = () => {
-    window.open(tonKeeperConnectUrl as string, '_blank');
+    window.open(tonKeeperUniversalLink as string, '_blank');
   };
 
   return (
