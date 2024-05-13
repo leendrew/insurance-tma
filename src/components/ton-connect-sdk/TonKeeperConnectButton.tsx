@@ -50,12 +50,7 @@ export function TonKeeperConnectButton() {
   useEffect(() => {
     const unsubscribe = tonConnect.onStatusChange((wallet) => {
       console.log('@ wallet status changed (from connect button)', wallet);
-
       if (!wallet) {
-        // user disconnect wallet
-        navigate(pathConfig.login.path);
-        toast.success('Wallet Disconnected');
-
         return;
       }
 
