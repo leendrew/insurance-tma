@@ -31,6 +31,7 @@ export function Modal({ topHeaderSlot, onClose, children, ...rest }: ModalProps)
           <Box
             sx={{
               display: 'flex',
+              marginBottom: '0.5rem',
             }}
           >
             {topHeaderSlot}

@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import { TonConnect } from '@tonconnect/sdk';
+import type { TonConnect } from '@tonconnect/sdk';
 import type { WalletInfo } from '@tonconnect/sdk';
 
 interface TonConnectSdkContextState {

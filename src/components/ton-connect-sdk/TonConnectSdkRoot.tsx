@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import type { PropsWithChildren } from 'react';
-import TonConnect from '@tonconnect/sdk';
+import { TonConnect } from '@tonconnect/sdk';
 import type { WalletInfo } from '@tonconnect/sdk';
 import { TonConnectSdkContext } from './TonConnect.context';
 import { GateOverlay } from '@/components/tma-sdk';
