@@ -1,3 +1,3 @@
 export * from './TonConnectSdkRoot';
 export * from './TonKeeperConnectButton';
-export * from './connector';
+export * from './TonConnect.context';

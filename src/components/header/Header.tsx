@@ -1,25 +1,34 @@
+import { useNavigate } from 'react-router-dom';
 import { Box, Container, Stack, Typography, IconButton } from '@mui/material';
 import { Logout as LogoutIcon } from '@mui/icons-material';
 import { toUserFriendlyAddress, CHAIN } from '@tonconnect/sdk';
-import { connector, TonKeeperConnectButton } from '@/components';
+import { useTonConnectSdkContext, TonKeeperConnectButton } from '@/components';
+import { pathConfig } from '@/shared/config';
 
 export function Header() {
-  const wallet = connector.wallet;
+  const navigate = useNavigate();
+  const { tonConnect } = useTonConnectSdkContext();
 
-  const slicedWalletAddress = (rawAddress: string, walletChain: CHAIN) => {
-    const friendlyAddress = toUserFriendlyAddress(rawAddress, walletChain === CHAIN.TESTNET);
+  const wallet = tonConnect.wallet;
+  const friendlyWalletAddress =
+    wallet && toUserFriendlyAddress(wallet.account.address, wallet.account.chain === CHAIN.TESTNET);
+  const slicedWalletAddress =
+    friendlyWalletAddress &&
+    `${friendlyWalletAddress.slice(0, 4)}...${friendlyWalletAddress.slice(-4)}`;
 
-    return friendlyAddress.slice(0, 4) + '...' + friendlyAddress.slice(-4);
-  };
+  const onWalletAddressClick = () => {
+    if (!friendlyWalletAddress) {
+      return;
+    }
 
-  const onAddressClick = (rawAddress: string, walletChain: CHAIN) => {
-    const friendlyAddress = toUserFriendlyAddress(rawAddress, walletChain === CHAIN.TESTNET);
-    navigator.clipboard.writeText(friendlyAddress);
+    navigator.clipboard.writeText(friendlyWalletAddress);
     // TODO success toast
   };
 
   const onDisconnectButtonClick = () => {
-    connector.disconnect();
+    tonConnect.disconnect().then(() => {
+      navigate(pathConfig.login.path);
+    });
   };
 
   return (
@@ -56,9 +65,9 @@ export function Header() {
                       cursor: 'pointer',
                     }}
                     variant="body1"
-                    onClick={() => onAddressClick(wallet.account.address, wallet.account.chain)}
+                    onClick={onWalletAddressClick}
                   >
-                    {slicedWalletAddress(wallet.account.address, wallet.account.chain)}
+                    {slicedWalletAddress}
                   </Typography>
                   <IconButton
                     color="error"

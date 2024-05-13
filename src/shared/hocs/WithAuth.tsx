@@ -1,14 +1,15 @@
 import { useEffect } from 'react';
 import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { pathConfig } from '@/shared/config';
-import { connector } from '@/components';
+import { useTonConnectSdkContext } from '@/components';
 
 export function WithAuth() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { tonConnect } = useTonConnectSdkContext();
 
   useEffect(() => {
-    const unsubscribe = connector.onStatusChange((wallet) => {
+    const unsubscribe = tonConnect.onStatusChange((wallet) => {
       if (!wallet) {
         // user disconnect wallet
         navigate(pathConfig.login.path, {
@@ -24,9 +25,9 @@ export function WithAuth() {
     return () => {
       unsubscribe();
     };
-  }, [navigate, location]);
+  }, [navigate, location, tonConnect]);
 
-  const isAuth = !!connector.wallet;
+  const isAuth = !!tonConnect.wallet;
 
   if (!isAuth) {
     return (
