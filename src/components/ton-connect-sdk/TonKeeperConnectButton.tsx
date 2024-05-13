@@ -21,29 +21,7 @@ export function TonKeeperConnectButton() {
     (wallet) => wallet.appName === TON_KEEPER_APP_NAME,
   ) as WalletInfo;
 
-  const [tonKeeperConnectUrl, setTonKeeperConnectUrl] = useState<string | null>(null);
-
-  useEffect(() => {
-    const unsubscribe = tonConnect.onStatusChange((wallet) => {
-      if (!wallet) {
-        // user disconnect wallet
-        return;
-      }
-
-      if (wallet.account.chain !== CHAIN.TESTNET) {
-        tonConnect.disconnect();
-        toast.error('You are in not testnet');
-        return;
-      }
-
-      navigate(pathConfig.home.path);
-      toast.success('Connect to Wallet');
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, [navigate, tonConnect]);
+  const [tonKeeperUniversalLink, setTonKeeperUniversalLink] = useState<string | null>(null);
 
   const onConnectButtonClick = () => {
     setIsModalOpen(true);
@@ -68,6 +46,35 @@ export function TonKeeperConnectButton() {
     // wallet not installed, show info about wallet installation (wallet.aboutUrl)
     console.log('@ wallet not installed');
   };
+
+  useEffect(() => {
+    const unsubscribe = tonConnect.onStatusChange((wallet) => {
+      console.log('@ wallet status changed (from connect button)', wallet);
+
+      if (!wallet) {
+        // user disconnect wallet
+        navigate(pathConfig.login.path);
+        toast.success('Wallet Disconnected');
+
+        return;
+      }
+
+      if (wallet.account.chain !== CHAIN.TESTNET) {
+        tonConnect.disconnect().then(() => {
+          toast.error('You are not in testnet');
+        });
+
+        return;
+      }
+
+      navigate(pathConfig.home.path);
+      toast.success('Connect to Wallet');
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [navigate, tonConnect]);
 
   const onModalClose = () => {
     setIsModalOpen(false);

@@ -1,31 +1,10 @@
-import { useEffect } from 'react';
-import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { pathConfig } from '@/shared/config';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { useTonConnectSdkContext } from '@/components';
+import { pathConfig } from '@/shared/config';
 
 export function WithAuth() {
-  const navigate = useNavigate();
   const location = useLocation();
   const { tonConnect } = useTonConnectSdkContext();
-
-  useEffect(() => {
-    const unsubscribe = tonConnect.onStatusChange((wallet) => {
-      if (!wallet) {
-        // user disconnect wallet
-        navigate(pathConfig.login.path, {
-          replace: true,
-          state: {
-            from: location,
-          },
-        });
-        return;
-      }
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, [navigate, location, tonConnect]);
 
   const isAuth = !!tonConnect.wallet;
 
