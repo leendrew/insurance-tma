@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { Container, Stack, Typography } from '@mui/material';
 import { TonKeeperConnectButton } from '@/components';
 
@@ -32,13 +31,6 @@ export function LoginPage() {
             variant="body1"
           >
             Make sure you have testnet Wallet
-          </Typography>
-          <Typography
-            component="span"
-            variant="body1"
-          >
-            You can top up your balance via&nbsp;
-            <Link to="https://t.me/testgiver_ton_bot">@testgiver_ton_bot</Link>
           </Typography>
         </Stack>
       </Container>
