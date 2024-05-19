@@ -1,6 +1,5 @@
 import type { PropsWithChildren } from 'react';
-import { DisplayGate, SDKProvider } from '@tma.js/sdk-react';
-import { GateOverlay } from './gate-overlay';
+import { SDKProvider } from '@tma.js/sdk-react';
 import { TmaSdkInit } from './TmaSdkInit';
 
 interface TmaSdkRootProps {}
@@ -9,18 +8,10 @@ export function TmaSdkRoot({ children }: PropsWithChildren<TmaSdkRootProps>) {
   return (
     <>
       <SDKProvider
-        options={{
-          acceptCustomStyles: true,
-          cssVars: true,
-          complete: true,
-        }}
+        acceptCustomStyles
+        debug
       >
-        <DisplayGate
-          initial={<GateOverlay />}
-          loading={<GateOverlay />}
-        >
-          <TmaSdkInit>{children}</TmaSdkInit>
-        </DisplayGate>
+        <TmaSdkInit>{children}</TmaSdkInit>
       </SDKProvider>
     </>
   );

@@ -24,11 +24,11 @@ importers:
         specifier: ^2.3.3
         version: 2.3.3
       '@tma.js/sdk':
-        specifier: ^1.5.3
-        version: 1.5.3
+        specifier: ^2.1.0
+        version: 2.1.0
       '@tma.js/sdk-react':
-        specifier: ^2.0.3
-        version: 2.0.3(@tma.js/sdk@1.5.3)(@types/react@18.3.1)(react@18.3.1)
+        specifier: ^2.1.4
+        version: 2.1.4(@types/react@18.3.1)(react@18.3.1)
       '@ton/core':
         specifier: ^0.56.3
         version: 0.56.3(@ton/crypto@3.2.0)
@@ -671,18 +671,17 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@tma.js/sdk-react@2.0.3':
-    resolution: {integrity: sha512-8fvnVk/bwCuOOhKLGLL2ryE93GzcY2l3cSCRg7ATHmzrzV9NIZpkEtNY2CtsjmGONIrtxpT/WTcljj86hN5lOw==}
+  '@tma.js/sdk-react@2.1.4':
+    resolution: {integrity: sha512-eIR4eQ3EDO/vxNpUhVDOdIDHkjBjYztl5lwxm2rona1p/xGPmV+jDjP45Cwj4gcWm/+FTyGurWi2XrJ13Yk0Ug==}
     peerDependencies:
-      '@tma.js/sdk': 1.5.3
       '@types/react': ^17.0.0 || ^18.0.0
       react: ^17.0.0 || ^18.0.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
 
-  '@tma.js/sdk@1.5.3':
-    resolution: {integrity: sha512-oXWtFoiiJCzsueOrX7FFQhpljUOLY3BkxNen6J6Ri0r1gZrlu1uFKZVeCpV7KUzsNTLfIK9VQEOcNxI3zuejJA==}
+  '@tma.js/sdk@2.1.0':
+    resolution: {integrity: sha512-jCHkqoNlEECBCf8ZjoSlHS5Yvs9Z4IrhI0BuJ88i9/RBhmUy/GF87cIQbLUFb5P+4BvsKCLtAM6HPtVVdAkVMQ==}
 
   '@ton/core@0.56.3':
     resolution: {integrity: sha512-HVkalfqw8zqLLPehtq0CNhu5KjVzc7IrbDwDHPjGoOSXmnqSobiWj8a5F+YuWnZnEbQKtrnMGNOOjVw4LG37rg==}
@@ -2191,14 +2190,14 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.17.2':
     optional: true
 
-  '@tma.js/sdk-react@2.0.3(@tma.js/sdk@1.5.3)(@types/react@18.3.1)(react@18.3.1)':
+  '@tma.js/sdk-react@2.1.4(@types/react@18.3.1)(react@18.3.1)':
     dependencies:
-      '@tma.js/sdk': 1.5.3
+      '@tma.js/sdk': 2.1.0
       react: 18.3.1
     optionalDependencies:
       '@types/react': 18.3.1
 
-  '@tma.js/sdk@1.5.3': {}
+  '@tma.js/sdk@2.1.0': {}
 
   '@ton/core@0.56.3(@ton/crypto@3.2.0)':
     dependencies:
