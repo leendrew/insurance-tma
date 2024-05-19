@@ -3,7 +3,7 @@ import type { PropsWithChildren } from 'react';
 import { TonConnect } from '@tonconnect/sdk';
 import type { WalletInfo } from '@tonconnect/sdk';
 import { TonConnectSdkContext } from './TonConnect.context';
-import { GateOverlay } from '@/components/tma-sdk';
+import { LoadingOverlay } from '@/components';
 
 const tonConnect = new TonConnect({
   manifestUrl: 'https://insurance-tma.vercel.app/tonconnect-manifest.json',
@@ -27,7 +27,7 @@ export function TonConnectSdkRoot({ children }: PropsWithChildren<TonConnectSdkR
 
   return (
     <>
-      {isLoading && <GateOverlay />}
+      {isLoading && <LoadingOverlay />}
       {!isLoading && (
         <TonConnectSdkContext.Provider value={{ tonConnect, wallets }}>
           {children}

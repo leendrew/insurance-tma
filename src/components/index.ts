@@ -1,3 +1,4 @@
+export * from './loading-overlay';
 export * from './tma-sdk';
 export * from './ton-connect-sdk';
 export * from './ton-client-sdk';

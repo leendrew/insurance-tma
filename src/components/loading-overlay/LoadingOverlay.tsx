@@ -1,6 +1,6 @@
-import styles from './GateOverlay.module.css';
+import styles from './LoadingOverlay.module.css';
 
-export function GateOverlay() {
+export function LoadingOverlay() {
   return (
     <>
       <div className={styles.overlay}>

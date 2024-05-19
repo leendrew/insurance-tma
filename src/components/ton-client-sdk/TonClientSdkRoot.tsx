@@ -3,7 +3,7 @@ import type { PropsWithChildren } from 'react';
 import { TonClient } from '@ton/ton';
 import { getHttpEndpoint } from '@orbs-network/ton-access';
 import { TonClientSdkContext } from './TonClient.context';
-import { GateOverlay } from '@/components';
+import { LoadingOverlay } from '@/components';
 
 interface TonClientSdkRootProps {}
 
@@ -28,7 +28,7 @@ export function TonClientSdkRoot({ children }: PropsWithChildren<TonClientSdkRoo
 
   return (
     <>
-      {isLoading && <GateOverlay />}
+      {isLoading && <LoadingOverlay />}
       {!isLoading && (
         <TonClientSdkContext.Provider value={{ tonClient } as { tonClient: TonClient }}>
           {children}
