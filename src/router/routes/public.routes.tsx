@@ -4,10 +4,9 @@ import { LoginPage } from '@/pages';
 import { pathConfig } from '@/shared/config';
 
 export const publicRoutes = {
-  index: false,
   children: [
     {
-      index: false,
+      path: '/',
       element: <AuthLayout />,
       children: [
         {

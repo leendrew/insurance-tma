@@ -5,15 +5,12 @@ import { HomePage } from '@/pages';
 import { pathConfig } from '@/shared/config';
 
 export const privateRoutes = {
-  index: false,
   element: <WithAuth />,
   children: [
     {
-      index: false,
       element: <MainLayout />,
       children: [
         {
-          index: true,
           path: pathConfig.home.path,
           element: <HomePage />,
         },
